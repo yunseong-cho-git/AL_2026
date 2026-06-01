@@ -1,0 +1,12 @@
+flowchart TD
+    A[분자 SMILES 입력] --> B[property_score 계산]
+    A --> C[smarts_score 계산]
+    B --> B1[MW, logP, HBD, HBA, TPSA 계산]
+    B1 --> B2[Tice 2001 범위 조건 충족시 각 1점]
+    B2 --> B3[TPSA 가우시안 점수 추가]
+    C --> C1[농약 패턴 8개 매칭]
+    C1 --> C2[penalty 패턴 2개 적용]
+    C2 --> C3[0~1 정규화]
+    B3 --> D[pesticide_score = 0.5 x property + 0.5 x smarts]
+    C3 --> D
+    D --> E[최종 score 출력]

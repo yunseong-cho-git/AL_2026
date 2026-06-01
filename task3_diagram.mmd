@@ -1,0 +1,9 @@
+flowchart TD
+    A[positive_scores 농약] --> C[labels 생성 positive=1 negative=0]
+    B[negative_scores ZINC] --> C
+    C --> D[Histogram 분포 비교]
+    C --> E[ROC Curve 계산]
+    E --> F[AUC = 0.764]
+    F --> G[양호한 구분 성능 확인]
+    A --> H[score 상위 3개 구조 시각화]
+    B --> I[score 하위 3개 구조 시각화]

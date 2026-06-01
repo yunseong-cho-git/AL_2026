@@ -1,0 +1,9 @@
+flowchart TD
+    A[PubChem_Agrochemical.csv 로드] --> B[농약 SMILES 추출]
+    B --> C[Morgan Fingerprint 계산]
+    C --> D[300개 샘플링]
+    D --> E[ZINC DB 로드]
+    E --> F[Tanimoto 유사도 계산]
+    F --> G{max sim <= 0.3?}
+    G -->|Yes| H[Negative 추가]
+    G -->|No| I[제외]
